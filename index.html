@@ -1,10 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Connor Shorten</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --link: #1a5fb4;
+      --border: #e5e5e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .layout {
+      display: flex;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      gap: 48px;
+    }
+
+    .sidebar {
+      flex: 0 0 240px;
+      position: sticky;
+      top: 48px;
+      align-self: flex-start;
+      text-align: center;
+    }
+    .sidebar h1 {
+      font-size: 1.6rem;
+      margin: 0 0 16px;
+    }
+    .sidebar img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 16px;
+    }
+    .sidebar .role { margin: 0; font-weight: 600; }
+    .sidebar .org { margin: 0 0 16px; color: var(--muted); }
+    .sidebar .links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar .links li { margin: 4px 0; }
+
+    .content {
+      flex: 1;
+      border-left: 1px solid var(--border);
+      padding-left: 48px;
+    }
+    .content p { margin: 0 0 1.2em; }
+
+    @media (max-width: 720px) {
+      .layout { flex-direction: column; padding: 32px 16px; gap: 24px; }
+      .sidebar { position: static; flex: none; width: 100%; }
+      .sidebar .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; }
+      .sidebar .links li { margin: 0; }
+      .content { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 24px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello!</h1>
-  <p>Welcome to my website.</p>
+  <div class="layout">
+    <nav class="sidebar">
+      <h1>Connor Shorten</h1>
+      <img src="Connor.jpeg" alt="Photo of Connor Shorten">
+      <p class="role">Research Scientist</p>
+      <p class="org"><a href="https://weaviate.io">Weaviate</a></p>
+      <ul class="links">
+        <li><a href="mailto:connor@weaviate.io">Email</a></li>
+        <li><a href="#">CV</a></li>
+        <li><a href="#">Scholar</a></li>
+        <li><a href="https://github.com/CShorten">GitHub</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <p>I am currently a Research Scientist at Weaviate as a member of the Agents team.</p>
+
+      <p>I am interested in the intersection of AI and Databases: What new capabilities should Databases have to support AI? What new capabilities are enabled within Databases because of AI?</p>
+
+      <p>My recent work on Weaviate’s Agents team has mostly been centered around the Query Agent: an AI-powered search, question answering, chat, and research system. At the core of the Query Agent lie innovations in agent-database co-design, text-to-SQL, query writing for search, reranking, context management, and hallucination detection. In addition to my engineering work, I have led four research publications.</p>
+
+      <p>I have hosted 147 episodes of the Weaviate Podcast, totaling over 500,000 views across YouTube and Spotify.</p>
+
+      <p>I received my Ph.D. in Computer Science from Florida Atlantic University in 2023, where I was advised by Taghi M. Khoshgoftaar. During my Ph.D., I was generously supported by the South Broward Hospital District. My Ph.D. research was focused on Data Augmentation for Deep Learning and applications in COVID-19 prognosis.</p>
+    </main>
+  </div>
 </body>
 </html>
