@@ -50,7 +50,9 @@
       margin-bottom: 16px;
     }
     .sidebar .role { margin: 0; font-weight: 600; }
-    .sidebar .org { margin: 0 0 16px; color: var(--muted); }
+    .sidebar .org { margin: 0; color: var(--muted); }
+    .sidebar .project { margin: 0; color: var(--muted); }
+    .sidebar .podcast { margin: 0 0 16px; color: var(--muted); }
     .sidebar .links {
       list-style: none;
       padding: 0;
@@ -64,6 +66,10 @@
       padding-left: 48px;
     }
     .content p { margin: 0 0 1.2em; }
+    .content h2 { font-size: 1.3rem; margin: 2em 0 0.6em; }
+    .content .news { padding-left: 1.2em; margin: 0; }
+    .content .news li { margin: 0 0 0.6em; }
+    .content .news .date { font-weight: 600; margin-right: 0.5em; }
 
     @media (max-width: 720px) {
       .layout { flex-direction: column; padding: 32px 16px; gap: 24px; }
@@ -81,12 +87,14 @@
       <img src="Connor.jpeg" alt="Photo of Connor Shorten">
       <p class="role">Research Scientist</p>
       <p class="org"><a href="https://weaviate.io">Weaviate</a></p>
+      <p class="project"><a href="https://docs.weaviate.io/query-agent">Query Agent</a></p>
+      <p class="podcast"><a href="https://weaviate.io/podcast">Weaviate Podcast</a></p>
       <ul class="links">
         <li><a href="mailto:connor@weaviate.io">Email</a></li>
         <li><a href="#">CV</a></li>
-        <li><a href="#">Scholar</a></li>
+        <li><a href="https://scholar.google.com/citations?user=YKuiy20AAAAJ&amp;hl=en">Scholar</a></li>
         <li><a href="https://github.com/CShorten">GitHub</a></li>
-        <li><a href="#">Twitter</a></li>
+        <li><a href="https://x.com/CShorten30">Twitter</a></li>
         <li><a href="#">LinkedIn</a></li>
       </ul>
     </nav>
@@ -101,6 +109,11 @@
       <p>I have hosted 147 episodes of the Weaviate Podcast, totaling over 500,000 views across YouTube and Spotify.</p>
 
       <p>I received my Ph.D. in Computer Science from Florida Atlantic University in 2023, where I was advised by Taghi M. Khoshgoftaar. During my Ph.D., I was generously supported by the South Broward Hospital District. My Ph.D. research was focused on Data Augmentation for Deep Learning and applications in COVID-19 prognosis.</p>
+
+      <h2>News</h2>
+      <ul class="news">
+        <li><span class="date">Oct 2026</span> Introducing the Query Agent MCP Server. <a href="https://www.youtube.com/watch?v=DkyeCALihuY">YouTube</a></li>
+      </ul>
     </main>
   </div>
 </body>
