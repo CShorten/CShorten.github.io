@@ -9,93 +9,24 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #222222;
-      --muted: #666666;
-      --link: #222222;
-      --border: #e5e5e5;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-    }
-    a { color: var(--link); font-weight: 600; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .layout {
-      display: flex;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 48px 24px;
-      gap: 48px;
-    }
-
-    .sidebar {
-      flex: 0 0 240px;
-      position: sticky;
-      top: 48px;
-      align-self: flex-start;
-      text-align: center;
-    }
-    .sidebar h1 {
-      font-size: 1.6rem;
-      margin: 0 0 16px;
-    }
-    .sidebar img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 16px;
-    }
-    .sidebar .role { margin: 0; }
-    .sidebar .org { margin: 0 0 36px; color: var(--muted); }
-    .sidebar .project { margin: 0; color: var(--muted); }
-    .sidebar .podcast { margin: 0; color: var(--muted); }
-    .sidebar .publications { margin: 0 0 16px; color: var(--muted); }
-    .sidebar .links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar .links li { margin: 4px 0; }
-
-    .content {
-      flex: 1;
-      border-left: 1px solid var(--border);
-      padding-left: 48px;
-    }
-    .content p { margin: 0 0 1.2em; }
-    .content h2 { font-size: 1.3rem; margin: 2em 0 0.6em; }
-    .content .news { padding-left: 1.2em; margin: 0; }
-    .content .news li { margin: 0 0 0.6em; }
-    .content .news .date { font-weight: 600; margin-right: 0.5em; }
-
-    @media (max-width: 720px) {
-      .layout { flex-direction: column; padding: 32px 16px; gap: 24px; }
-      .sidebar { position: static; flex: none; width: 100%; }
-      .sidebar .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; }
-      .sidebar .links li { margin: 0; }
-      .content { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 24px; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Young+Serif&amp;display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="layout">
-    <nav class="sidebar">
-      <h1>Connor Shorten</h1>
-      <img src="Connor.jpeg" alt="Photo of Connor Shorten">
-      <p class="role">Research Scientist</p>
-      <p class="org"><a href="https://weaviate.io">Weaviate</a></p>
-      <p class="project"><a href="https://docs.weaviate.io/query-agent">Query Agent</a></p>
-      <p class="podcast"><a href="https://weaviate.io/podcast">Weaviate Podcast</a></p>
-      <p class="publications"><a href="#">Publications</a></p>
+    <aside class="sidebar">
+      <img class="portrait" src="Connor.jpeg" alt="Photo of Connor Shorten">
+      <div>
+        <h1><a href="index.html">Connor Shorten</a></h1>
+        <p class="role">Research Scientist, <a href="https://weaviate.io">Weaviate</a></p>
+      </div>
+      <nav class="site-nav" aria-label="Site">
+        <a href="https://docs.weaviate.io/query-agent">Query Agent</a>
+        <a href="https://www.youtube.com/playlist?list=PLTL2JUbrY6tW-KOQfOek8dtUmPgGQj3F0">Weaviate Podcast</a>
+        <a href="publications.html">Publications</a>
+      </nav>
       <ul class="links">
         <li><a href="mailto:connorshorten300@gmail.com">Email</a></li>
         <li><a href="Connor-Shorten-CV.pdf">CV</a></li>
@@ -104,25 +35,32 @@
         <li><a href="https://x.com/CShorten30">Twitter</a></li>
         <li><a href="https://www.linkedin.com/in/connor-shorten-34923a178/">LinkedIn</a></li>
       </ul>
-    </nav>
+    </aside>
 
     <main class="content">
-      <p>I am a Research Scientist at Weaviate as a member of the Agents team.</p>
+      <p class="lead">I am a Research Scientist at Weaviate as a member of the Agents team.</p>
 
       <p>I am interested in the intersection of AI and Databases: What new capabilities should Databases have to support AI? What new capabilities are enabled within Databases because of AI?</p>
 
-      <p>My recent work on Weaviate’s Agents team has mostly been centered around the Query Agent: an AI-powered search, question answering, chat, and research system. At the core of the Query Agent lie innovations in agent-database co-design, text-to-SQL, query writing for search, reranking, context management, and hallucination detection. In addition to my engineering work, I have led four research publications.</p>
+      <p>My recent work on Weaviate’s Agents team has mostly been centered around the Query Agent: an AI-powered search, question answering, chat, and research system. At the core of the Query Agent lie innovations in agent-database co-design, text-to-SQL, query writing for search, reranking, context management, and hallucination detection. In addition to my engineering work, I have led four research publications:</p>
+      <ul class="bio-list">
+        <li><a href="preprints/scaling-reranked-retrieval.html">Scaling Reranked Retrieval</a></li>
+        <li><a href="https://arxiv.org/abs/2602.17687">IRPAPERS: A Visual Document Benchmark for Scientific Retrieval and Question Answering</a></li>
+        <li><a href="https://arxiv.org/abs/2502.00032">Querying Databases with Function Calling</a></li>
+        <li><a href="https://arxiv.org/abs/2408.11061">StructuredRAG: JSON Response Formatting with Large Language Models</a></li>
+      </ul>
 
-      <p>I have hosted 147 episodes of the Weaviate Podcast, totaling over 500,000 views across YouTube and Spotify.</p>
+      <p>I have also hosted 150 episodes of the Weaviate Podcast.</p>
 
       <p>I received my Ph.D. in Computer Science from Florida Atlantic University in 2023, where I was advised by Taghi M. Khoshgoftaar. During my Ph.D., I was generously supported by the South Broward Hospital District. My Ph.D. research was focused on Data Augmentation for Deep Learning and applications in COVID-19 prognosis.</p>
 
       <h2>News</h2>
       <ul class="news">
-        <li><span class="date">Nov 2026</span> Weaviate Podcast #149: Scaling Discovery with Shangyin Tan. <a href="https://www.youtube.com/watch?v=Y21NgZvx3Rs">YouTube</a></li>
-        <li><span class="date">Oct 2026</span> Weaviate Podcast #148: Machine Studying with Jacob X. Li. <a href="https://www.youtube.com/watch?v=9iZIl0vZvvk">YouTube</a></li>
-        <li><span class="date">Oct 2026</span> Inside Weaviate's MCP Ecosystem. <a href="https://www.youtube.com/watch?v=VZjicnVSfVs">YouTube</a></li>
-        <li><span class="date">Oct 2026</span> Introducing the Query Agent MCP Server. <a href="https://www.youtube.com/watch?v=DkyeCALihuY">YouTube</a></li>
+        <li><span class="date">Nov 2026</span> <span>Weaviate Podcast #150: ZeroEntropy with Ghita Houir Alami. <a href="https://www.youtube.com/watch?v=mQgYPtctNG8">YouTube</a></span></li>
+        <li><span class="date">Nov 2026</span> <span>Weaviate Podcast #149: Scaling Discovery with Shangyin Tan. <a href="https://www.youtube.com/watch?v=Y21NgZvx3Rs">YouTube</a></span></li>
+        <li><span class="date">Oct 2026</span> <span>Weaviate Podcast #148: Machine Studying with Jacob X. Li. <a href="https://www.youtube.com/watch?v=9iZIl0vZvvk">YouTube</a></span></li>
+        <li><span class="date">Oct 2026</span> <span>Inside Weaviate's MCP Ecosystem. <a href="https://www.youtube.com/watch?v=VZjicnVSfVs">YouTube</a></span></li>
+        <li><span class="date">Oct 2026</span> <span>Introducing the Query Agent MCP Server. <a href="https://www.youtube.com/watch?v=DkyeCALihuY">YouTube</a></span></li>
       </ul>
     </main>
   </div>

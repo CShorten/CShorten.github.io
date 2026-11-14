@@ -1,0 +1,225 @@
+:root {
+  --green: #2f4a35;
+  --beige: #f4eee3;
+  --text: #33271e;
+  --muted: #6b5a4b;
+  --copper: #8a4b26;
+  --sage: #c9d3b8;
+  --copper-light: #d9a77c;
+  --rule: #d8ccb8;
+  --rule-on-green: rgba(239, 231, 216, .2);
+  --code-bg: #ebe3d4;
+
+  --serif-display: "Young Serif", Georgia, serif;
+  --serif-body: "Newsreader", Georgia, serif;
+  --sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--beige);
+  color: var(--text);
+  font-family: var(--serif-body);
+  font-size: 19px;
+  line-height: 1.6;
+}
+a { color: var(--green); text-decoration: none; }
+a:hover { color: var(--copper); text-decoration: underline; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.layout { display: flex; align-items: flex-start; }
+
+/* Sidebar */
+.sidebar {
+  flex: 0 0 clamp(360px, 32vw, 500px);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 48px clamp(40px, 4vw, 64px);
+  background: var(--green);
+  color: var(--sage);
+  font-family: var(--sans);
+}
+.sidebar a:focus-visible { outline-color: var(--copper-light); }
+.sidebar .portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 25%;
+  max-height: 48vh;
+  border-radius: 4px;
+}
+.sidebar h1 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+.sidebar h1 a { color: var(--beige); }
+.sidebar h1 a:hover { color: var(--beige); }
+.sidebar .role { margin: 0; font-size: 15px; color: var(--sage); }
+.sidebar .role a { color: var(--beige); font-weight: 500; }
+.sidebar .site-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-on-green);
+}
+.sidebar .site-nav a { color: var(--beige); font-size: 16px; font-weight: 500; }
+.sidebar .site-nav a:hover { color: var(--copper-light); text-decoration: none; }
+.sidebar .links {
+  list-style: none;
+  margin: 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--rule-on-green);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.sidebar .links a { color: var(--copper-light); }
+.sidebar .links a:hover { color: var(--beige); }
+
+/* Main column */
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: calc(760px + 144px);
+  margin: 0 auto;
+  padding: 56px 72px 64px;
+}
+.content p { margin: 0 0 20px; text-wrap: pretty; }
+.content .lead { font-size: 26px; line-height: 1.4; color: var(--green); }
+.content h2 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.25;
+  color: var(--green);
+  margin: 28px 0 16px;
+}
+.content h2:first-child { margin-top: 0; }
+
+/* Publications led at Weaviate, on the home page */
+.content .bio-list {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.content .bio-list li { border-bottom: 1px solid var(--rule); }
+.content .bio-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: 4px;
+  transition: background-color .2s ease, color .2s ease;
+}
+.content .bio-list a::after {
+  content: "\2192";
+  font-family: var(--sans);
+  color: var(--copper);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.content .bio-list a:hover,
+.content .bio-list a:focus-visible {
+  background: var(--code-bg);
+  color: var(--copper);
+  text-decoration: none;
+}
+.content .bio-list a:hover::after,
+.content .bio-list a:focus-visible::after { opacity: 1; transform: none; }
+
+/* News */
+.content .news { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 16px; line-height: 1.5; }
+.content .news li { display: grid; grid-template-columns: 92px 1fr; column-gap: 18px; margin: 0 0 12px; }
+.content .news .date { font-weight: 600; color: var(--copper); }
+.content .news a { font-weight: 600; }
+
+/* Publications page */
+.pubs { list-style: none; padding: 0; margin: 0; }
+.pubs li { margin: 0 0 1.4em; }
+.pubs .title { font-weight: 600; }
+.pubs .authors, .pubs .venue { display: block; font-family: var(--sans); font-size: 15px; color: var(--muted); }
+.pubs .authors .me { color: var(--text); font-weight: 600; }
+.pubs .venue a { font-weight: 600; margin-right: 0.6em; }
+.pubs .note { font-style: italic; }
+
+.cite-toggle {
+  font: inherit;
+  font-weight: 600;
+  color: var(--green);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.cite-toggle:hover { color: var(--copper); text-decoration: underline; }
+.bibtex-wrap { position: relative; margin: 0.6em 0 0; }
+.bibtex {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--code-bg);
+  color: var(--text);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--sans);
+  font-size: 12px;
+  padding: 2px 8px;
+  color: var(--text);
+  background: var(--beige);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Paper landing page */
+.content .paper-title { font-size: 34px; margin: 0 0 12px; }
+.paper-authors { margin: 0 0 4px; }
+.paper-meta { font-family: var(--sans); font-size: 15px; color: var(--muted); margin: 0 0 32px; }
+.paper-meta a { font-weight: 600; margin-right: 0.6em; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+@media (max-width: 1180px) {
+  .sidebar .links { font-size: 13px; }
+}
+@media (max-width: 900px) {
+  .layout { display: block; }
+  .sidebar .links { font-size: 14px; justify-content: flex-start; gap: 8px 16px; }
+  .sidebar { position: static; height: auto; overflow: visible; padding: 32px; }
+  .sidebar .portrait { width: 200px; }
+  .content { max-width: none; padding: 40px 32px 48px; }
+}
+@media (max-width: 600px) {
+  .sidebar { padding: 32px 16px; }
+  .content { padding: 32px 16px 48px; }
+  .content .lead { font-size: 22px; }
+}

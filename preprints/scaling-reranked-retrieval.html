@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scaling Reranked Retrieval</title>
+  <meta name="description" content="Where should the next unit of inference compute go in a retrieve-then-rerank search system: depth, stages, or width? A study on the BRIGHT benchmark.">
+
+  <meta name="citation_title" content="Scaling Reranked Retrieval">
+  <meta name="citation_author" content="Shorten, Connor">
+  <meta name="citation_author" content="Williams, Daniel J.">
+  <meta name="citation_author" content="Jones, Daniel M.">
+  <meta name="citation_author" content="Skaburskas, Augustas">
+  <meta name="citation_author" content="Trengrove, John">
+  <meta name="citation_author" content="Dilocker, Etienne">
+  <meta name="citation_author" content="van Luijt, Bob">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_technical_report_institution" content="Weaviate">
+  <meta name="citation_pdf_url" content="https://cshorten.github.io/preprints/scaling-reranked-retrieval.pdf">
+  <meta name="citation_abstract_html_url" content="https://cshorten.github.io/preprints/scaling-reranked-retrieval.html">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Young+Serif&amp;display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <img class="portrait" src="../Connor.jpeg" alt="Photo of Connor Shorten">
+      <div>
+        <h1><a href="../index.html">Connor Shorten</a></h1>
+        <p class="role">Research Scientist, <a href="https://weaviate.io">Weaviate</a></p>
+      </div>
+      <nav class="site-nav" aria-label="Site">
+        <a href="https://docs.weaviate.io/query-agent">Query Agent</a>
+        <a href="https://www.youtube.com/playlist?list=PLTL2JUbrY6tW-KOQfOek8dtUmPgGQj3F0">Weaviate Podcast</a>
+        <a href="../publications.html">Publications</a>
+      </nav>
+      <ul class="links">
+        <li><a href="mailto:connorshorten300@gmail.com">Email</a></li>
+        <li><a href="../Connor-Shorten-CV.pdf">CV</a></li>
+        <li><a href="https://scholar.google.com/citations?user=YKuiy20AAAAJ&amp;hl=en">Scholar</a></li>
+        <li><a href="https://github.com/CShorten">GitHub</a></li>
+        <li><a href="https://x.com/CShorten30">Twitter</a></li>
+        <li><a href="https://www.linkedin.com/in/connor-shorten-34923a178/">LinkedIn</a></li>
+      </ul>
+    </aside>
+
+    <main class="content" data-cite>
+      <h2 class="paper-title">Scaling Reranked Retrieval</h2>
+      <p class="paper-authors">Connor Shorten, Daniel J. Williams, Daniel M. Jones, Augustas Skaburskas, John Trengrove, Etienne Dilocker, Bob van Luijt</p>
+      <p class="paper-meta">Weaviate · Preprint, 2026. <a href="scaling-reranked-retrieval.pdf">PDF</a> <a href="https://github.com/weaviate/scaling-reranked-retrieval">Code</a> <button class="cite-toggle" type="button" aria-expanded="false">Cite</button></p>
+      <div class="bibtex-wrap" hidden><pre class="bibtex">@misc{shorten2026scaling,
+  title  = {Scaling Reranked Retrieval},
+  author = {Shorten, Connor and Williams, Daniel J. and Jones, Daniel M. and Skaburskas, Augustas and Trengrove, John and Dilocker, Etienne and van Luijt, Bob},
+  year   = {2026},
+  note   = {Preprint},
+  url    = {https://cshorten.github.io/preprints/scaling-reranked-retrieval.html}
+}</pre><button class="copy-btn" type="button">Copy</button></div>
+
+      <h2>Abstract</h2>
+      <p>The accuracy of search results is increasingly purchased at inference time rather than baked into a single model. Measured by result quality, most state-of-the-art systems retrieve a candidate pool, rerank it with a cross-encoder, and increasingly re-order the remaining candidates with a listwise reranker. Each addition spends more compute per query, and each raises the same question of where the next unit of compute is best spent: depth, stages, or width? We map all three levers on five subsets of BRIGHT, a benchmark designed to test reasoning-intensive information retrieval, using hybrid retrieval that combines Weaviate BM25 with Snowflake Arctic 2.0 embeddings, three commercial cross-encoders: Cohere rerank-v4.0-pro, Voyage rerank-2.5, and ZeroEntropy zerank-2, and three listwise LLM rerankers from OpenAI: GPT-5.4 Mini, GPT-5.6 Luna, and GPT-5.6 Terra.</p>
+      <p>Depth and stages compose into a quality ladder. Deepening retrieval from k=100 to k=2,000 nearly doubles the share of relevant documents available to later stages from 0.476 to 0.871, and each added stage converts more of that availability into a more accurate ranking. Mean nDCG@10 climbs from 0.181 under hybrid retrieval alone, to 0.424 when the strongest cross-encoder reranks the deepest pool, and 0.470 when a listwise pass re-orders the retained top-20 from the cross-encoder. Increasing depth further at the listwise stage extends the ladder less than expected. Retaining 100 rather than 20 candidates from the cross-encoder places substantially more relevant documents within the listwise stage’s reach, yet the listwise pass only gains 0.012 nDCG@10 at five times the inference cost.</p>
+      <p>The case for width comes from the models themselves. At each reranking stage, the three models uniquely solve roughly fifty queries their peers miss. However, equal-weight fusion converts almost none of this disagreement, at best marginally exceeding the best single cross-encoder and falling short of the strongest listwise model. Depth and stages are therefore the reliable levers of today’s retrieve-then-rerank systems, while width under static fusion is not, marking query-dependent routing as its promising form for future work. Our experimental code is available on GitHub at <a href="https://github.com/weaviate/scaling-reranked-retrieval">github.com/weaviate/scaling-reranked-retrieval</a>.</p>
+    </main>
+  </div>
+  <script src="../cite.js"></script>
+</body>
+</html>
